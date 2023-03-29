@@ -134,9 +134,10 @@ public class Datasource {
             }
             else {
                 try(Statement statement= conn.createStatement();
-                    ResultSet result= statement.executeQuery("UPDATE "+TABLE_CLIENTS+" SET "+BALANCE_ACCOUNT+"="+BALANCE_ACCOUNT+"+"+value+" WHERE "+NUMBER_ACCOUNT+" = '"+numAccount+"';");
-                    ResultSet result2=statement.executeQuery("UPDATE "+TABLE_CLIENTS+" SET "+BALANCE_ACCOUNT+"="+BALANCE_ACCOUNT+"-"+value+" WHERE "+NUMBER_ACCOUNT+" = '"+client.getNumberAccount()+"';"))
+                   )
                 {
+                    statement.executeUpdate("UPDATE "+TABLE_CLIENTS+" SET "+BALANCE_ACCOUNT+"="+BALANCE_ACCOUNT+"+"+value+" WHERE "+NUMBER_ACCOUNT+" = '"+numAccount+"';");
+                    statement.executeUpdate("UPDATE "+TABLE_CLIENTS+" SET "+BALANCE_ACCOUNT+"="+BALANCE_ACCOUNT+"-"+value+" WHERE "+NUMBER_ACCOUNT+" = '"+client.getNumberAccount()+"';");
 
 
                 }catch (SQLException e)
@@ -149,5 +150,33 @@ public class Datasource {
         }else {
             System.out.println("Balance account can't be on minus");
         }
+    }
+    public static String inputLogin(){
+        System.out.println("LOGIN :");
+        Scanner scanner=new Scanner(System.in);
+        String logS=scanner.next();
+        System.out.println("");
+        if(logS.length()!=5)
+        {
+
+            System.out.println("Login format incorrect");
+            inputLogin();
+        }
+        for(int i=0;i<logS.length();i++)
+        {
+            if(logS.charAt(i)<'0' || logS.charAt(i)>'9')
+            {
+                System.out.println("Login format incorrect");
+                inputLogin();
+            }
+        }
+        return logS;
+
+    }
+    public static String inputPassword()
+    {
+        System.out.println("PASSWORD :");
+        Scanner scanner=new Scanner(System.in);
+        return scanner.next();
     }
 }

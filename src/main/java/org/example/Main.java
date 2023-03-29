@@ -20,7 +20,7 @@ public class Main {
            // client.display();
        // }
        // datasource.close();
-        Access a=datasource.account("23459","Vh3&nF5$");
+        Access a=datasource.account(Datasource.inputLogin(),Datasource.inputPassword());
         System.out.println(a.getNumber_account());
         Client example=datasource.clientAccount(a.getNumber_account());
         example.display();

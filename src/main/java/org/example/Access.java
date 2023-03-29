@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Access {
     private String number_account;
     private String login;
@@ -28,4 +30,6 @@ public class Access {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
