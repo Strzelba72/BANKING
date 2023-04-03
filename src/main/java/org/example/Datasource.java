@@ -29,6 +29,7 @@ public class Datasource {
         }catch (SQLException e)
         {
             System.out.println("Something went wrong "+e.getMessage());
+            System.out.println("!!!");
             return false;
         }
     }
@@ -124,7 +125,7 @@ public class Datasource {
     {
 
     }
-    public void transfer(Client client,String numAccount,int value)
+    public void transfer(Client client,String numAccount,float value)
     {
         if((client.getBalanceAccount()-value)>=0)
         {
@@ -160,14 +161,14 @@ public class Datasource {
         {
 
             System.out.println("Login format incorrect");
-            inputLogin();
+            return null;
         }
         for(int i=0;i<logS.length();i++)
         {
             if(logS.charAt(i)<'0' || logS.charAt(i)>'9')
             {
                 System.out.println("Login format incorrect");
-                inputLogin();
+                return null;
             }
         }
         return logS;
